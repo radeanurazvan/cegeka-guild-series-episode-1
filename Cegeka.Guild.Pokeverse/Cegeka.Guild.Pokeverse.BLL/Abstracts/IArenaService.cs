@@ -5,6 +5,8 @@ namespace Cegeka.Guild.Pokeverse.BLL.Abstracts
 {
     public interface IArenaService
     {
+        IEnumerable<FinishedBattleModel> GetFinishedBattles();
+
         IEnumerable<OngoingBattleModel> GetOngoingBattles();
     }
 }

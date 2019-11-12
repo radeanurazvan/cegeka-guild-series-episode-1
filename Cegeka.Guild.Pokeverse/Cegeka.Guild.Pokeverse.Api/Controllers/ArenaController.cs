@@ -19,5 +19,13 @@ namespace Cegeka.Guild.Pokeverse.Api.Controllers
             var battles = this.arenaService.GetOngoingBattles();
             return Ok(battles);
         }
+
+
+        [HttpGet("finished")]
+        public IActionResult GetFinishedBattles()
+        {
+            var battles = this.arenaService.GetFinishedBattles();
+            return Ok(battles);
+        }
     }
 }

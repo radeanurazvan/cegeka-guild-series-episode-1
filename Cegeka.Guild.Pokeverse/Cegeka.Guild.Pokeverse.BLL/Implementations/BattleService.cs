@@ -93,6 +93,8 @@ namespace Cegeka.Guild.Pokeverse.BLL.Implementations
             if (pokemonTakingDamage.Health <= 0)
             {
                 battle.Winner = pokemonDealingDamage;
+                battle.Loser = pokemonTakingDamage.Pokemon;
+                battle.FinishedAt = DateTime.Now;
             }
         }
     }
