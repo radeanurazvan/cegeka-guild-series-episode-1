@@ -8,4 +8,8 @@
     <Folder Include="Controllers\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Cegeka.Guild.Pokeverse.DAL\Cegeka.Guild.Pokeverse.DAL.csproj" />
+  </ItemGroup>
+
 </Project>
