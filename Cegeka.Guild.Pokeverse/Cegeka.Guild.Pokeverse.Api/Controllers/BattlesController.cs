@@ -20,6 +20,12 @@ namespace Cegeka.Guild.Pokeverse.Api.Controllers
             return RunWithException(() => this.battleService.StartBattle(model.AttackerId, model.DefenderId), Ok);
         }
 
+        [HttpPatch("{id:Guid}")]
+        public IActionResult UseAbility([FromRoute] Guid id, [FromBody] UseAbilityModel model)
+        {
+            return RunWithException(() => this.battleService.UseAbility(id, model.ParticipantId, model.AbilityId), NoContent);
+        }
+
         private IActionResult RunWithException(Action act, Func<IActionResult> onOk)
         {
             try
