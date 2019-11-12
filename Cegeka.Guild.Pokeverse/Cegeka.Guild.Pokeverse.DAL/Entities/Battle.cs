@@ -4,9 +4,15 @@ namespace Cegeka.Guild.Pokeverse.DAL.Entities
 {
     public class Battle : Entity
     {
-        public Pokemon Attacker { get; set; }
+        public Guid AttackerId { get; set; }
 
-        public Pokemon Defender { get; set; }
+        public PokemonInFight Attacker { get; set; }
+
+        public Guid DefenderId { get; set; }
+
+        public PokemonInFight Defender { get; set; }
+
+        public Guid ActivePlayer { get; set; }
 
         public DateTime StartedAt { get; set; }
 

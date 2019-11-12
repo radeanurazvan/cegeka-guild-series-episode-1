@@ -46,7 +46,7 @@ namespace Cegeka.Guild.Pokeverse.BLL.Implementations
             Enumerable.Range(1, RandomPokemonsOnRegister)
                 .Select(_ => random.Next(0, pokemons.Count()))
                 .Select(randomIndex => pokemons.ElementAt(randomIndex))
-                .Select(definition => new Pokemon(definition))
+                .Select(definition => new Pokemon(trainer, definition))
                 .ToList()
                 .ForEach(p =>
                 {

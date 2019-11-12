@@ -1,10 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Cegeka.Guild.Pokeverse.DAL.Entities
 {
     public class Pokemon : Entity
     {
-        public Pokemon(PokemonDefinition definition)
+        public Pokemon(Trainer trainer, PokemonDefinition definition)
         {
             Definition = definition;
 
@@ -13,7 +14,11 @@ namespace Cegeka.Guild.Pokeverse.DAL.Entities
             DamagePoints = 2;
             CurrentLevel = 1;
             Experience = 0;
+
+            TrainerId = trainer.Id;
         }
+
+        public Guid TrainerId { get; set; }
 
         public string Name => this.Definition.Name;
 
