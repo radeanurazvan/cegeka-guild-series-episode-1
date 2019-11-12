@@ -1,9 +1,11 @@
+using Cegeka.Guild.Pokeverse.BLL;
 using Cegeka.Guild.Pokeverse.DAL;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.OpenApi.Models;
 
 namespace Cegeka.Guild.Pokeverse.Api
 {
@@ -21,6 +23,8 @@ namespace Cegeka.Guild.Pokeverse.Api
         {
             services
                 .AddPersistence()
+                .AddServices()
+                .AddSwaggerGen(c => c.SwaggerDoc("v1", new OpenApiInfo {Title = "My API", Version = "v1"}))
                 .AddControllers();
         }
 
@@ -33,6 +37,8 @@ namespace Cegeka.Guild.Pokeverse.Api
             }
 
             app
+                .UseSwagger()
+                .UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1"))
                 .UseHttpsRedirection()
                 .UseRouting()
                 .UseAuthorization()
