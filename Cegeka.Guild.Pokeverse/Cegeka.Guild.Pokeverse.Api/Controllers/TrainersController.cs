@@ -14,6 +14,12 @@ namespace Cegeka.Guild.Pokeverse.Api.Controllers
             this.trainersService = trainersService;
         }
 
+        [HttpGet("")]
+        public IActionResult GetAll()
+        {
+            return Ok(this.trainersService.GetAll());
+        }
+
         [HttpPost("")]
         public IActionResult Register([FromBody]RegisterTrainerModel model)
         {

@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Cegeka.Guild.Pokeverse.BLL.Abstracts;
+using Cegeka.Guild.Pokeverse.BLL.Models;
 using Cegeka.Guild.Pokeverse.DAL.Abstracts;
 using Cegeka.Guild.Pokeverse.DAL.Entities;
 
@@ -19,6 +21,20 @@ namespace Cegeka.Guild.Pokeverse.BLL.Implementations
             this.definitionsRepository = definitionsRepository;
             this.pokemonsRepository = pokemonsRepository;
             this.trainerRepository = trainerRepository;
+        }
+
+        public IEnumerable<TrainerModel> GetAll()
+        {
+            return this.trainerRepository.GetAll().Select(t => new TrainerModel
+            {
+                Id = t.Id,
+                Name = t.Name,
+                Pokemons = t.Pokemons.Select(p => new PokemonModel
+                {
+                    Id = p.Id,
+                    Name = p.Name
+                }).ToList()
+            });
         }
 
         public void Register(string name)
